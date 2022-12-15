@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("partials/head.ejs") %>
+
+    <body>
+        <div class="app-background">
+            <div class="todo-container">
+                <div class="todo-header">
+                    <h2>TODO LIST</h2>
+                </div>
+                <div class="todo-list-background">
+                    <form class="todo-add" action="/" method="POST">
+                        <input type="text" name="content" placeholder="Enter task here">
+                        <button type="submit">Add</button>
+                    </form>
+                    <ul class="todo-list-item">
+
+                        <%- body %>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    <%- include("partials/footer.ejs") %>
+
+</html>

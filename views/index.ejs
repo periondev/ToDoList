@@ -1,0 +1,13 @@
+<% todoTasks.forEach((details)=>{ %>
+    <li>
+        <div>
+            <%= details.content %>
+        </div>
+        <a href="/edit/<%= details._id%>" class="edit-btn">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </a>
+        <a href="/remove/<%= details._id %>" class="remove">
+            <i class="fa-solid fa-trash-can"></i>
+        </a>
+    </li>
+    <% }) %>
