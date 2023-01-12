@@ -3,29 +3,23 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
-
 }
 
 .app-background {
     min-height: 1000px;
-    background-image: linear-gradient(#35529b, #1ba8b8);
-    /* edit */
+    background-image: linear-gradient(#5b74bf, #68a0ea);
     justify-content: center;
     align-items: center;
-    padding: 5em;
-
+    padding: 2em 3em;
+    display: flex;
 }
 
 .todo-container {
-
     color: white;
     position: relative;
     margin: auto;
-
     padding: 20px;
-    width: 640px;
-    /* edit */
-    /* transform: translate(-50%, -50%); */
+    width: 680px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     align-items: center;
@@ -35,49 +29,47 @@ body {
 }
 
 .todo-header {
-
     margin: 5px;
     font-family: 'Baloo 2', cursive;
     font-size: 2em;
     letter-spacing: 0.3em;
-    /* font-weight: 900; */
-    /* font-style: italic; */
     display: flex;
     flex-direction: column;
     justify-content: top;
     align-items: center;
 }
 
-.todo-add {
+.todo-add-form {
     padding: 7px;
     display: flex;
     align-items: center;
 }
 
-.todo-add input {
+.todo-add-form input {
+    font-size: 16px;
     height: 25px;
     border: none;
     border-radius: 10px;
     margin: 5px;
-    padding: 7px 7px;
+    padding: 8px 10px;
     width: 100%;
 }
 
-.todo-add button {
+.todo-add-form button {
     font-family: 'Baloo 2', cursive;
     cursor: pointer;
-    padding: 10px 15px;
-    margin: 5px;
+    padding: 8px 10px;
+    font-size: 16px;
+    margin: 5px 0px 5px 5px;
     border-radius: 10px;
     border: none;
     background-color: #ef922d;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
 
 }
 
 .todo-list-background {
-
-    width: 68%;
-    flex-grow: 2;
+    width: 75%;
     border: none;
     outline: none;
     background: none;
@@ -88,21 +80,24 @@ body {
 
 .todo-list-item {
     overflow-y: hidden;
+    margin: 10px 0px;
     padding: 10px;
 
 }
 
 /*  */
 .todo-list-item li {
+    font-size: 16px;
     padding: 10px;
-    margin-top: 10px;
+    margin: 15px 0px;
     border: none;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 10, 0.3);
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    list-style-type: none;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -117,52 +112,63 @@ body {
     padding: 5px;
 }
 
+.edit-btn {
+    color: rgb(143, 233, 58);
+    margin: 7px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 /* todoEdit */
-.edit-form {
-    display: inline-flex;
+.todo-edit-form {
+    display: flex;
+    width: 100%;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .edit-input {
+    padding: 8px 10px;
     margin: 5px;
-    padding: 5px;
     border-radius: 10px;
-    width: 200px;
-}
-
-/* buttons */
-.edit-btn {
-    color: rgb(143, 233, 58);
-    margin-right: 10px;
-    cursor: pointer;
-    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    width: -webkit-fill-available;
 }
 
 .save {
+    font-size: 16px;
+    font-family: 'Baloo 2', cursive;
     color: white;
     text-decoration: none;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    padding: 9px;
+    padding: 6px 8px;
     background-color: rgb(51, 212, 100);
-    margin-left: 7px;
+    margin: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 }
 
 .cancel {
+    font-size: 16px;
+    font-family: 'Baloo 2', cursive;
     color: white;
     text-decoration: none;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    padding: 9px;
+    padding: 6px 8px;
     background-color: rgb(141, 145, 148);
-    margin-left: 7px;
+    margin: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 footer p {
     text-align: center;
-    background-color: #19c6d9;
+    background: #5b74bf;
     margin: 0;
-    padding: 5px;
+    padding: 3px;
 }

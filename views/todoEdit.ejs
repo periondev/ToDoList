@@ -1,19 +1,15 @@
 <% todoTasks.forEach((details)=>{ %>
-    <% if (details._id==idTask) { %>
-        <li>
-            <form class="edit-form" action="/edit/<%= details._id %>" method="POST">
-
-                <input class="edit-input" type="text" value="<%= details.content %>" name="content">
+    <li>
+        <% if (details._id==idTask) { %>
+            <form class="todo-edit-form" action="/edit/<%= details._id %>" method="POST"> <input class="edit-input"
+                    type="text" value="<%= details.content %>" name="content">
                 <a href="/" class="cancel">Cancel</a>
                 <button type="submit" class="save">Save</button>
                 <a href="/remove/<%= details._id %>" class="remove">
                     <i class="fa-solid fa-trash-can"></i>
                 </a>
             </form>
-
-        </li>
-        <% } else { %>
-            <li>
+            <% } else { %>
                 <div>
                     <%= details.content %>
                 </div>
@@ -23,6 +19,6 @@
                 <a href="/remove/<%= details._id %>" class="remove">
                     <i class="fa-solid fa-trash-can"></i>
                 </a>
-            </li>
-            <% } %>
-                <% }) %>
+                <% } %>
+    </li>
+    <% }) %>
