@@ -172,3 +172,7 @@ footer p {
     margin: 0;
     padding: 3px;
 }
+
+a {
+    text-decoration: none;
+}
