@@ -1,5 +1,4 @@
 //jshint esversion:6
-
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
@@ -9,33 +8,34 @@ const dotenv = require('dotenv');
 dotenv.config();
 const TodoTask = require('./models/db');
 
+//Express setting
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(expressLayouts);
 
-//Params of mongoose connection
+//Mongo connection URI and params
+const mongoURI = process.env.DB_CONNECT;
 const connectionParams = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
 
 //Connect to mongodb atlas (connect your application)
-mongoose.connect(process.env.DB_CONNECT, connectionParams, (err) => {
-  if (err) {
-    console.log('Connection failed.');
-  } else {
-    console.log('Database connected successfully.');
-    app.listen(3000, () => console.log('Server is running on 3000'));
-  }
-});
+mongoose
+  .connect(mongoURI, connectionParams)
+  .then(app.listen(3000, () => console.log('Server is running on 3000')))
+  .catch((error) => handleError(error));
 
 //READ todos method
-app.get('/', (req, res) => {
-  TodoTask.find({}, (err, tasks) => {
+app.get('/', async (req, res) => {
+  try {
+    const tasks = await TodoTask.find({});
     res.render('index.ejs', { todoTasks: tasks });
-  });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //CREATE todos method
@@ -54,24 +54,32 @@ app.post('/', async (req, res) => {
 //UPDATE todos method
 app
   .route('/edit/:id')
-  .get((req, res) => {
+  .get(async (req, res) => {
     const id = req.params.id;
-    TodoTask.find({}, (err, tasks) => {
+    try {
+      const tasks = await TodoTask.find({});
       res.render('todoEdit.ejs', { todoTasks: tasks, idTask: id });
-    });
+    } catch (err) {
+      console.log(err);
+    }
   })
-
   .post(async (req, res) => {
     const id = req.params.id;
-    await TodoTask.findByIdAndUpdate(id, { content: req.body.content });
-    res.redirect('/');
+    try {
+      await TodoTask.findByIdAndUpdate(id, { content: req.body.content });
+      res.redirect('/');
+    } catch (err) {
+      console.log(err);
+    }
   });
 
 //DELETE todos method
-app.route('/remove/:id').get((req, res) => {
+app.get('/remove/:id', async (req, res) => {
   const id = req.params.id;
-  TodoTask.findByIdAndRemove(id, (err) => {
-    if (err) return res.send(500, err);
+  try {
+    await TodoTask.findByIdAndRemove(id);
     res.redirect('/');
-  });
+  } catch (err) {
+    console.log(err);
+  }
 });
